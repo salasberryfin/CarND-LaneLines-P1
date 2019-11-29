@@ -113,23 +113,22 @@ Following this procedure, I get the following outputs for the images.
 [//]: # (Image References)
 
 ![alt text](./output-images/output-solidWhiteCurve.jpg)
-[image2]: ./output-images/output-solidWhiteRight.jpg 
-[image3]: ./output-images/output-solidYellowCurve.jpg 
-[image4]: ./output-images/output-solidYellowCurve2.jpg 
-[image5]: ./output-images/output-solidYellowLeft.jpg 
-[image6]: ./output-images/output-whiteCarLaneSwitch.jpg 
+![alt text](./output-images/output-solidWhiteRight.jpg)
+![alt text](./output-images/output-solidYellowCurve.jpg) 
+![alt text](./output-images/output-solidYellowCurve2.jpg) 
+![alt text](./output-images/output-solidYellowLeft.jpg)
+![alt text](./output-images/output-whiteCarLaneSwitch.jpg)
 
+It applies as well for the video stream, which in the end is only a stream of images concatenated together.
 
 ### 2. Identify potential shortcomings with your current pipeline
 
 
-One potential shortcoming would be what would happen when ... 
+The main problem with my solution is that I've not been able to apply a line drawn as smooth as the example provided. I've been trying to tweak my settings and testing different posibilities to obtain a better drawing on the image but I had no success. The example output shows a very realiable, almost static line prediction that I don't know how to obtain.
 
-Another shortcoming could be ...
+I also tried to adapt the source code of `draw_lines` to behave properly with the challenge video (detect a curve), but, again, with no luck. I thought about the possibility of detecting multiple smaller lines (which ultimately can form a curve when drawn together), but I always got a total mess with my tests (detections coming out of everywhere and no much sense on what I was doing).
 
 
 ### 3. Suggest possible improvements to your pipeline
 
-A possible improvement would be to ...
-
-Another potential improvement could be to ...
+As previously explained, the code should be smoother when drawing lane lines on straight roads. I understand that the "vibration" produced by the uneven line drawing could make the vision unusable in a practical scenario, so I should work on tweaking the settings further more, but so far, I haven't been successful when trying to improve the current situation.

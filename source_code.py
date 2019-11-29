@@ -292,7 +292,6 @@ for item in image_names:
     lines = hough_lines(masked_image, rho, theta, threshold, min_line_length,
                         max_line_gap)
     
-    color_edges = np.dstack((edges, edges, edges))
     lines_edges = weighted_img(lines, image)
     plt.imshow(lines_edges)
     plt.savefig(output_folder + "output-"+item)
@@ -358,7 +357,6 @@ def process_image(image):
     lines = hough_lines(masked_image, rho, theta, threshold, min_line_length,
                         max_line_gap)
     
-    color_edges = np.dstack((edges, edges, edges))
     result = weighted_img(lines, image)
     plt.imshow(lines_edges)
     plt.savefig(output_folder + "output-"+item)

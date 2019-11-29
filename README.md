@@ -120,7 +120,7 @@ Following this procedure, I get the following outputs for the images.
 ![alt text](./output-images/output-solidYellowLeft.jpg)
 ![alt text](./output-images/output-whiteCarLaneSwitch.jpg)
 
-It applies as well for the video stream, which in the end is only a stream of images concatenated together.
+It applies as well for the video stream (as seen in this repository, folder `output-videos`), which in the end is only a stream of images concatenated together.
 
 ### 2. Identify potential shortcomings with your current pipeline
 

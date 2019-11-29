@@ -112,7 +112,7 @@ Following this procedure, I get the following outputs for the images.
 
 [//]: # (Image References)
 
-![alt text]()./output-images/output-solidWhiteCurve.jpg)
+![alt text](./output-images/output-solidWhiteCurve.jpg)
 [image2]: ./output-images/output-solidWhiteRight.jpg 
 [image3]: ./output-images/output-solidYellowCurve.jpg 
 [image4]: ./output-images/output-solidYellowCurve2.jpg 

@@ -44,7 +44,7 @@ elif slope > 0:
     # right line
 ```
 
-2. In order to get a smoother view of the lines drawn on the image, I get the average of (x, y) for each line detected, and append it to a list (whether it is right or left), as follows.
+2. In order to get a smoother view of the lines drawn on the image, I get the average of `x, y` for each line detected, and append it to a list (whether it is right or left), as follows.
 
 ```python
 imshape = img.shape
@@ -71,7 +71,7 @@ for line in lines:
                 right_slope = slope 
 
 ```
-3. I will also be using the equation of a line (y=ax+b) to set the origin of the lane on the bottom of the image (using x, y and the slope). I want to smooth the line in the image, so I extract the two furthest points of the line (I created two new methods to achieve this).
+3. I will also be using the equation of a line `y=ax+b` to set the origin of the lane on the bottom of the image (using x, y and the slope). I want to smooth the line in the image, so I extract the two furthest points of the line (I created two new methods to achieve this).
 
 ```python
 if (left_slope and right_slope) and (left_slope and right_slope != 0):
@@ -79,6 +79,7 @@ if (left_slope and right_slope) and (left_slope and right_slope != 0):
     left_lines = [(int((imshape[0]-b_left)/left_slope), imshape[0]), max_left]
     max_right = get_largest_right(right_lines, imshape[1])
     right_lines = [(int((imshape[0]-b_right)/right_slope), imshape[0]), max_right]
+
 
 def get_largest_left(lines):
     max_x = 0
@@ -101,11 +102,11 @@ def get_largest_right(lines, x_size):
 ```
 4. I can now draw the lines on the left and right, respectively.
 ```python
-    for x in range(0,len(left_lines)-1):
-        cv2.line(img, left_lines[x], left_lines[x+1], color, thickness)
-        
-    for x in range(0,len(right_lines)-1):
-        cv2.line(img, right_lines[x], right_lines[x+1], color, thickness)
+for x in range(0,len(left_lines)-1):
+    cv2.line(img, left_lines[x], left_lines[x+1], color, thickness)
+    
+for x in range(0,len(right_lines)-1):
+    cv2.line(img, right_lines[x], right_lines[x+1], color, thickness)
 ```
 
 Following this procedure, I get the following outputs for the images.

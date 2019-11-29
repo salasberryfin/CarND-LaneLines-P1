@@ -17,15 +17,15 @@ The goals / steps of this project are the following:
 
 Following what I learned during lesson 5, I based my pipeline to detect lane lines on the following steps:
 
-1. Read the image and convert it to grayscale
-2. Apply a Gaussian Noise kernel (using kernel=5)
-3. Canny transform (using low_threshold=70, high_threshold=140)
-4. Define an area (square) of interest that contains the lane lines applying an image mask. 
+1. Read the image and convert it to grayscale.
+2. Apply a Gaussian Noise kernel (using kernel=5).
+3. Canny transform (using low_threshold=70, high_threshold=140).
+4. Define an area (square) of interest that contains the lane lines, applying an image mask. 
 5. Obtain and draw Hough lines on the image, for which I used the following values after testing a few different scenarios:
-    rho = 2
-    theta = pi/180
-    threshold = 35
-    max_line_gap = 20
+    * rho = 2
+    * theta = pi/180
+    * threshold = 35
+    * max_line_gap = 20
 6. Using the image output of step 5, generate the result image, which represents the original image with the detected lines drawn on top of it.
 
 These 6 steps use the `helper methods` provided to create a basic detection system for the lanes.
@@ -36,7 +36,7 @@ To achieve this:
 
 1. Calculate the slope to separate the lines corresponding to the left lane line and the right lane line. By doing this we can compose each line separately.
 
-```
+```python
 slope = (y2-y1)/(x2-x1)
 if slope < 0:
     # left line
@@ -46,7 +46,7 @@ elif slope > 0:
 
 2. In order to get a smoother view of the lines drawn on the image, I get the average of (x, y) for each line detected, and append it to a list (whether it is right or left), as follows.
 
-```
+```python
 imshape = img.shape
 right_lines = []
 left_lines = []
@@ -73,7 +73,7 @@ for line in lines:
 ```
 3. I will also be using the equation of a line (y=ax+b) to set the origin of the lane on the bottom of the image (using x, y and the slope). I want to smooth the line in the image, so I extract the two furthest points of the line (I created two new methods to achieve this).
 
-```
+```python
 if (left_slope and right_slope) and (left_slope and right_slope != 0):
     max_left = get_largest_left(left_lines)
     left_lines = [(int((imshape[0]-b_left)/left_slope), imshape[0]), max_left]
@@ -100,7 +100,7 @@ def get_largest_right(lines, x_size):
     return (max_x, max_y)
 ```
 4. I can now draw the lines on the left and right, respectively.
-```
+```python
     for x in range(0,len(left_lines)-1):
         cv2.line(img, left_lines[x], left_lines[x+1], color, thickness)
         
